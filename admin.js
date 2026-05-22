@@ -80,3 +80,32 @@ function removeRank() {
     document.getElementById("status").innerHTML =
         `${gamemode} removed from ${playerName}.`;
 }
+
+function deletePlayer() {
+    const playerName = document.getElementById("playerName").value.trim();
+
+    if (!playerName) {
+        document.getElementById("status").innerHTML =
+            "Enter a player name to delete.";
+        return;
+    }
+
+    let players = getPlayers();
+
+    const index = players.findIndex(
+        p => p.name.toLowerCase() === playerName.toLowerCase()
+    );
+
+    if (index === -1) {
+        document.getElementById("status").innerHTML =
+            "Player not found.";
+        return;
+    }
+
+    players.splice(index, 1); // remove the whole player object
+
+    savePlayers(players);
+
+    document.getElementById("status").innerHTML =
+        `${playerName} has been deleted.`;
+}
