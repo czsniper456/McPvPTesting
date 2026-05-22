@@ -1,51 +1,50 @@
-body {
-    background: linear-gradient(135deg, #ff00cc, #6600ff);
-    font-family: 'Poppins', sans-serif;
+.title {
+    text-align: center;
+    font-size: 48px;
+    font-weight: 900;
+    color: yellow;
+    margin-top: 20px;
+}
+
+.title .white {
     color: white;
-    margin: 0;
-    padding: 0;
+}
+
+.top-controls {
     display: flex;
     justify-content: center;
-    align-items: flex-start;
-    min-height: 100vh;
+    margin-top: 10px;
 }
 
-.card {
-    background-color: #1a001f;
-    border-radius: 12px;
-    box-shadow: 0 0 20px #ff00ff;
-    padding: 20px;
-    width: 600px;
-    margin-top: 40px;
+#searchBar {
+    width: 300px;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    font-size: 16px;
 }
 
-.player-bubble {
+.filter-buttons {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #2a0030;
-    border: 2px solid #ff00ff;
-    border-radius: 12px;
-    padding: 12px 20px;
-    margin: 10px 0;
-    width: 100%;
-    box-sizing: border-box;
-    transition: transform 0.2s ease;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 15px 0;
+    gap: 10px;
 }
 
-.player-bubble:hover {
-    transform: scale(1.03);
-}
-
-.player-name {
+.filter-buttons button {
+    background-color: #ff00ff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    color: white;
     font-weight: bold;
-    font-size: 18px;
+    cursor: pointer;
+    transition: 0.2s;
 }
 
-.player-points {
-    font-weight: bold;
-    color: #ff80ff;
+.filter-buttons button:hover {
+    background-color: #ff55ff;
+    transform: scale(1.05);
 }
-
-.mode {
-    font
