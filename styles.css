@@ -2,14 +2,76 @@ body {
     background: linear-gradient(135deg, #a100ff, #ff4fd8, #000000);
     font-family: Arial, sans-serif;
     color: white;
+    margin: 0;
+    padding: 0;
+}
+
+#content {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+}
+
+.card {
+    background: rgba(20,20,20,0.85);
+    border: 2px solid purple;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 20px rgba(128,0,128,0.4);
+}
+
+.player-bubble {
+    background: rgba(30, 0, 40, 0.7);
+    border: 2px solid #ff4fd8;
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 25px rgba(255, 79, 216, 0.5);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.2s;
+}
+
+.player-bubble:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 35px rgba(255, 79, 216, 0.8);
+}
+
+.player-left {
+    display: flex;
+    flex-direction: column;
+}
+
+.player-name {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.player-modes .mode {
+    font-size: 0.95rem;
+    color: #ffbaff;
+}
+
+.player-points {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #d86cff;
 }
 
 button {
     background: linear-gradient(45deg, #a100ff, #ff4fd8);
     border: none;
-    padding: 15px 25px;
+    padding: 12px 20px;
     border-radius: 12px;
     color: white;
     font-size: 1rem;
     cursor: pointer;
-    transition: 0
+    margin-top: 10px;
+}
+
+button:hover {
+    opacity: 0.85;
+}
