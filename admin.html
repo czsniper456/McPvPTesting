@@ -1,73 +1,63 @@
 <!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
 
-    <input
-        type="text"
-        id="playerName"
-        placeholder="Minecraft Username"
-    >
+<body>
 
-    <select id="gamemode">
-        <option value="sword">Sword</option>
-        <option value="axe">Axe</option>
-        <option value="mace">Mace</option>
-        <option value="uhc">UHC</option>
-        <option value="nethpot">Neth Pot</option>
-        <option value="pot">Pot</option>
-        <option value="smp">SMP</option>
-        <option value="crystal">Crystal</option>
-        <option value="spearmace">SpearMace</option>
-    </select>
+    <!-- LOGIN BOX -->
+    <div id="loginBox">
+        <h2>Admin Login</h2>
 
-    <select id="tier">
-        <option value="HT1">HT1</option>
-        <option value="LT1">LT1</option>
-        <option value="HT2">HT2</option>
-        <option value="LT2">LT2</option>
-        <option value="HT3">HT3</option>
-        <option value="LT3">LT3</option>
-        <option value="HT4">HT4</option>
-        <option value="LT4">LT4</option>
-        <option value="HT5">HT5</option>
-        <option value="LT5">LT5</option>
+        <input id="githubUser" placeholder="GitHub Username">
+        <input id="githubPass" type="password" placeholder="Password">
 
-        <option value="RHT1">RHT1</option>
-        <option value="RLT1">RLT1</option>
-        <option value="RHT2">RHT2</option>
-        <option value="RLT2">RLT2</option>
-        <option value="RHT3">RHT3</option>
-        <option value="RLT3">RLT3</option>
-        <option value="RHT4">RHT4</option>
-        <option value="RLT4">RLT4</option>
-        <option value="RHT5">RHT5</option>
-        <option value="RLT5">RLT5</option>
-    </select>
-
-    <div style="display:flex;gap:10px;flex-wrap:wrap;">
-        <button onclick="addPlayer()">
-            Add Player / Add Tier
-        </button>
-
-        <button onclick="changeTier()">
-            Change Tier
-        </button>
-
-        <button onclick="removeRank()">
-            Remove Rank
-        </button>
+        <button onclick="login()">Login</button>
     </div>
 
-    <div
-        id="status"
-        style="margin-top:20px;font-weight:bold;color:#ff4fd8;"
-    ></div>
-</div>
+    <!-- ADMIN PANEL (HIDDEN UNTIL LOGIN) -->
+    <div id="adminPanel" style="display:none;">
+        <h2>Admin Panel</h2>
 
-<script src="data.js"></script>
-<script src="admin.js"></script>
+        <input id="playerName" placeholder="Player Name">
+
+        <select id="gamemode">
+            <option value="sword">Sword</option>
+            <option value="axe">Axe</option>
+            <option value="mace">Mace</option>
+            <option value="uhc">UHC</option>
+            <option value="nethpot">NethPot</option>
+            <option value="pot">Pot</option>
+            <option value="smp">SMP</option>
+            <option value="crystal">Crystal</option>
+            <option value="spearmace">SpearMace</option>
+        </select>
+
+        <select id="tier">
+            <option value="HT1">HT1</option>
+            <option value="LT1">LT1</option>
+            <option value="HT2">HT2</option>
+            <option value="LT2">LT2</option>
+            <option value="HT3">HT3</option>
+            <option value="LT3">LT3</option>
+            <option value="HT4">HT4</option>
+            <option value="LT4">LT4</option>
+            <option value="HT5">HT5</option>
+            <option value="LT5">LT5</option>
+        </select>
+
+        <button onclick="addPlayer()">Add / Change Tier</button>
+        <button onclick="removeRank()">Remove Rank</button>
+        <button onclick="deletePlayer()">Delete Player</button>
+
+        <p id="status"></p>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="data.js"></script>
+    <script src="admin.js"></script>
 
 </body>
 </html>
-
-<input id="githubUser" placeholder="GitHub Username">
-<input id="githubPass" type="password" placeholder="Password">
-<button onclick="login()">Login</button>
