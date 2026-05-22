@@ -1,28 +1,34 @@
-const tierPoints = {
-    HT1: 10, LT1: 9, HT2: 8, LT2: 7, HT3: 6, LT3: 5,
-    HT4: 4, LT4: 3, HT5: 2, LT5: 1,
-    RHT1: 10, RLT1: 9, RHT2: 8, RLT2: 7, RHT3: 6, RLT3: 5,
-    RHT4: 4, RLT4: 3, RHT5: 2, RLT5: 1
-};
+let currentFilter = "all";
+let searchQuery = "";
 
-const content = document.getElementById("content");
-
-function getPlayers() {
-    return JSON.parse(localStorage.getItem("mcpvp_players")) || [];
+function filterMode(mode) {
+    currentFilter = mode;
+    showOverall();
 }
 
-function calculatePoints(player) {
-    let total = 0;
-    if (!player.rankings) return total;
-
-    for (const mode in player.rankings) {
-        total += tierPoints[player.rankings[mode]] || 0;
-    }
-    return total;
-}
+document.getElementById("searchBar").addEventListener("input", (e) => {
+    searchQuery = e.target.value.toLowerCase();
+    showOverall();
+});
 
 function showOverall() {
-    const players = getPlayers();
+    let players = getPlayers();
+
+    // SEARCH FILTER
+    if (searchQuery.trim() !== "") {
+        players = players.filter(p =>
+            p.name.toLowerCase().includes(searchQuery)
+        );
+    }
+
+    // GAMEMODE FILTER
+    if (currentFilter !== "all") {
+        players = players.filter(p =>
+            p.rankings && p.rankings[currentFilter]
+        );
+    }
+
+    // SORT BY POINTS
     players.sort((a, b) => calculatePoints(b) - calculatePoints(a));
 
     content.innerHTML = "";
@@ -53,5 +59,3 @@ function showOverall() {
 
     content.appendChild(card);
 }
-
-showOverall();
