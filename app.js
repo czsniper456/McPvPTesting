@@ -1,5 +1,22 @@
 const content = document.getElementById("content");
 
+    content.innerHTML = "";
+
+    const sorted = [...players].sort((a, b) => calculatePoints(b) - calculatePoints(a));
+
+    const card = document.createElement("div");
+    card.className = "card";
+
+    card.innerHTML = `<h2>Overall Rankings</h2>`;
+
+    if (sorted.length === 0) {
+        card.innerHTML += `<p>No players added yet.</p>`;
+    }
+
+    sorted.forEach(player => {
+        const div = document.createElement("div");
+        div.className = "player";
+
         div.innerHTML = `
             <span>${player.name}</span>
             <span class="points">${calculatePoints(player)} Points</span>
@@ -12,7 +29,7 @@ const content = document.getElementById("content");
 }
 
 function showGamemodes() {
-    players = JSON.parse(localStorage.getItem("mcpvp_players")) || [];
+    const players = getPlayers();
 
     content.innerHTML = "";
 
@@ -35,7 +52,7 @@ function showGamemodes() {
         card.innerHTML = `<h2>${mode.toUpperCase()}</h2>`;
 
         const sorted = [...players].sort((a, b) => {
-            return (tierPoints[b.rankings[mode]] || 0) - (tierPoints[a.rankings[mode]] || 0);
+            return (tierPoints[b.rankings?.[mode]] || 0) - (tierPoints[a.rankings?.[mode]] || 0);
         });
 
         let hasPlayers = false;
