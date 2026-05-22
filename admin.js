@@ -10,11 +10,18 @@ function login() {
 }
 
 function addPlayer() {
-    const playerName = document.getElementById("playerName").value;
+    const playerName = document.getElementById("playerName").value.trim();
     const gamemode = document.getElementById("gamemode").value;
     const tier = document.getElementById("tier").value;
 
-    let player = players.find(p => p.name === playerName);
+    if (!playerName) {
+        document.getElementById("status").innerHTML = "Enter a player name";
+        return;
+    }
+
+    let player = players.find(
+        p => p.name.toLowerCase() === playerName.toLowerCase()
+    );
 
     if (!player) {
         player = {
@@ -30,13 +37,17 @@ function addPlayer() {
     savePlayers();
 
     document.getElementById("status").innerHTML = `Saved ${playerName} (${gamemode} = ${tier})`;
+
+    console.log(players);
 }
 
 function removeRank() {
-    const playerName = document.getElementById("playerName").value;
+    const playerName = document.getElementById("playerName").value.trim();
     const gamemode = document.getElementById("gamemode").value;
 
-    let player = players.find(p => p.name === playerName);
+    let player = players.find(
+        p => p.name.toLowerCase() === playerName.toLowerCase()
+    );
 
     if (!player) {
         document.getElementById("status").innerHTML = "Player not found";
@@ -48,4 +59,6 @@ function removeRank() {
     savePlayers();
 
     document.getElementById("status").innerHTML = `Removed ${gamemode} rank from ${playerName}`;
+
+    console.log(players);
 }
