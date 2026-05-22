@@ -27,9 +27,9 @@ function addPlayer() {
 
     player.rankings[gamemode] = tier;
 
-    document.getElementById("status").innerHTML = `Saved ${playerName} (${gamemode} = ${tier})`;
+    savePlayers();
 
-    console.log(players);
+    document.getElementById("status").innerHTML = `Saved ${playerName} (${gamemode} = ${tier})`;
 }
 
 function removeRank() {
@@ -45,7 +45,7 @@ function removeRank() {
 
     delete player.rankings[gamemode];
 
-    document.getElementById("status").innerHTML = `Removed ${gamemode} rank from ${playerName}`;
+    savePlayers();
 
-    console.log(players);
+    document.getElementById("status").innerHTML = `Removed ${gamemode} rank from ${playerName}`;
 }
