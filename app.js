@@ -1,4 +1,3 @@
-const content = document.getElementById("content");
 function getPlayers() {
     return JSON.parse(localStorage.getItem("mcpvp_players")) || [];
 }
