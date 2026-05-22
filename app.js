@@ -1,9 +1,12 @@
+// Get the main content container
 const content = document.getElementById("content");
 
+// Load players from localStorage
 function getPlayers() {
     return JSON.parse(localStorage.getItem("mcpvp_players")) || [];
 }
 
+// Calculate total points for a player
 function calculatePoints(player) {
     let total = 0;
     if (!player.rankings) return total;
@@ -14,8 +17,13 @@ function calculatePoints(player) {
     return total;
 }
 
+// Display the leaderboard with sorting + bubbles
 function showOverall() {
     const players = getPlayers();
+
+    // SORT PLAYERS BY POINTS (highest → lowest)
+    players.sort((a, b) => calculatePoints(b) - calculatePoints(a));
+
     content.innerHTML = "";
 
     const card = document.createElement("div");
@@ -45,4 +53,5 @@ function showOverall() {
     content.appendChild(card);
 }
 
+// Load leaderboard on page open
 showOverall();
