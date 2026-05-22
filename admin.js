@@ -101,11 +101,3 @@ function deletePlayer() {
             "Player not found.";
         return;
     }
-
-    players.splice(index, 1); // remove the whole player object
-
-    savePlayers(players);
-
-    document.getElementById("status").innerHTML =
-        `${playerName} has been deleted.`;
-}
