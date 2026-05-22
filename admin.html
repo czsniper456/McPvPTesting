@@ -1,1 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
 
+<div class="background"></div>
+
+<header>
+    <h1>Admin Panel</h1>
+</header>
+
+<div id="loginBox" class="card" style="max-width:600px;margin:auto;">
+    <h2>GitHub Username Access</h2>
+    <input type="text" id="githubUser" placeholder="Enter GitHub Username">
+    <button onclick="login()">Login</button>
+</div>
+
+<div id="adminPanel" style="display:none;max-width:600px;margin:auto;">
+    <div class="card">
+        <h2>Add Player</h2>
+
+        <input type="text" id="playerName" placeholder="Player Name">
+
+        <select id="gamemode">
+            <option>sword</option>
+            <option>axe</option>
+            <option>mace</option>
+            <option>uhc</option>
+            <option>nethpot</option>
+            <option>pot</option>
+            <option>smp</option>
+            <option>crystal</option>
+            <option>spearmace</option>
+        </select>
+
+        <select id="tier">
+            <option>HT1</option>
+            <option>LT1</option>
+            <option>HT2</option>
+            <option>LT2</option>
+            <option>HT3</option>
+            <option>LT3</option>
+            <option>HT4</option>
+            <option>LT4</option>
+            <option>HT5</option>
+            <option>LT5</option>
+            <option>RHT1</option>
+            <option>RLT1</option>
+        </select>
+
+        <button onclick="addPlayer()">Save</button>
+
+        <div id="status"></div>
+    </div>
+</div>
+
+<script src="data.js"></script>
+<script src="admin.js"></script>
+</body>
+</html>
