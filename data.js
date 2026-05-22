@@ -1,4 +1,4 @@
-cconst tierPoints = {
+const tierPoints = {
     "HT1": 10,
     "LT1": 9,
     "HT2": 8,
@@ -22,4 +22,8 @@ cconst tierPoints = {
     "RLT5": 1
 };
 
-const players = [];
+let players = JSON.parse(localStorage.getItem("mcpvp_players")) || [];
+
+function savePlayers() {
+    localStorage.setItem("mcpvp_players", JSON.stringify(players));
+}
