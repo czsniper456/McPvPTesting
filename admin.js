@@ -1,9 +1,8 @@
-unction login() {
+function login() {
     const username = document.getElementById("githubUser").value.trim();
     const password = document.getElementById("githubPass").value.trim();
 
-    // TEMPORARY SECURITY — replace with GitHub OAuth later
-    if (username === "czsniper456" && password === "YOUR_SECRET_PASSWORD") {
+    if (username === "czsniper456" && password === "Noobcztesting_123PvPMC") {
         document.getElementById("loginBox").style.display = "none";
         document.getElementById("adminPanel").style.display = "block";
     } else {
