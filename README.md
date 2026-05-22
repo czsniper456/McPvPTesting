@@ -28,5 +28,5 @@ czsniper456
 - Gamemode leaderboards
 - Retired tiers
 - Point system
-- Purple/yellow/black animated style
+- Purple/pink/black animated style
 - GitHub Pages compatible
