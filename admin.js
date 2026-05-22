@@ -10,6 +10,8 @@ function login() {
 }
 
 function addPlayer() {
+    players = JSON.parse(localStorage.getItem("mcpvp_players")) || [];
+
     const playerName = document.getElementById("playerName").value.trim();
     const gamemode = document.getElementById("gamemode").value;
     const tier = document.getElementById("tier").value;
@@ -36,29 +38,11 @@ function addPlayer() {
 
     savePlayers();
 
-    document.getElementById("status").innerHTML = `Saved ${playerName} (${gamemode} = ${tier})`;
+    document.getElementById("status").innerHTML = `Updated ${playerName} (${gamemode} = ${tier})`;
 
     console.log(players);
 }
 
-function removeRank() {
-    const playerName = document.getElementById("playerName").value.trim();
-    const gamemode = document.getElementById("gamemode").value;
-
-    let player = players.find(
-        p => p.name.toLowerCase() === playerName.toLowerCase()
-    );
-
-    if (!player) {
-        document.getElementById("status").innerHTML = "Player not found";
-        return;
-    }
-
-    delete player.rankings[gamemode];
-
-    savePlayers();
-
-    document.getElementById("status").innerHTML = `Removed ${gamemode} rank from ${playerName}`;
-
-    console.log(players);
+function changeTier() {
+    addPlayer();
 }
