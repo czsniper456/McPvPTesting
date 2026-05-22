@@ -1,25 +1,20 @@
 const content = document.getElementById("content");
-
-    content.innerHTML = "";
-
-    const sorted = [...players].sort((a, b) => calculatePoints(b) - calculatePoints(a));
-
-    const card = document.createElement("div");
-    card.className = "card";
-
-    card.innerHTML = `<h2>Overall Rankings</h2>`;
-
-    if (sorted.length === 0) {
-        card.innerHTML += `<p>No players added yet.</p>`;
-    }
-
-    sorted.forEach(player => {
-        const div = document.createElement("div");
-        div.className = "player";
+        }
 
         div.innerHTML = `
-            <span>${player.name}</span>
-            <span class="points">${calculatePoints(player)} Points</span>
+            <div>
+                <div style="font-size:1.2rem;font-weight:bold;">
+                    ${player.name}
+                </div>
+
+                <div style="margin-top:8px;opacity:0.9;">
+                    ${gamemodeRanks}
+                </div>
+            </div>
+
+            <div class="points">
+                ${calculatePoints(player)} Points
+            </div>
         `;
 
         card.appendChild(div);
@@ -51,17 +46,20 @@ function showGamemodes() {
 
         card.innerHTML = `<h2>${mode.toUpperCase()}</h2>`;
 
-        const sorted = [...players].sort((a, b) => {
-            return (tierPoints[b.rankings?.[mode]] || 0) - (tierPoints[a.rankings?.[mode]] || 0);
-        });
+        const rankedPlayers = players
+            .filter(player => player.rankings && player.rankings[mode])
+            .sort((a, b) => {
+                return (
+                    (tierPoints[b.rankings[mode]] || 0) -
+                    (tierPoints[a.rankings[mode]] || 0)
+                );
+            });
 
-        let hasPlayers = false;
+        if (rankedPlayers.length === 0) {
+            card.innerHTML += `<p>No ranked players.</p>`;
+        }
 
-        sorted.forEach(player => {
-            if (!player.rankings || !player.rankings[mode]) return;
-
-            hasPlayers = true;
-
+        rankedPlayers.forEach(player => {
             const div = document.createElement("div");
             div.className = "player";
 
@@ -72,10 +70,6 @@ function showGamemodes() {
 
             card.appendChild(div);
         });
-
-        if (!hasPlayers) {
-            card.innerHTML += `<p>No ranked players.</p>`;
-        }
 
         content.appendChild(card);
     });
