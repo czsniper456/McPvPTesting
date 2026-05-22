@@ -1,9 +1,8 @@
 body {
-    margin-bottom: 30px;
 }
 
 button {
-    background: linear-gradient(45deg, purple, gold);
+    background: linear-gradient(45deg, #a100ff, #ff4fd8);
     border: none;
     padding: 15px 25px;
     border-radius: 12px;
@@ -56,7 +55,7 @@ button:hover {
 }
 
 .tier {
-    color: gold !important;
+    color: #ff4fd8 !important;
     font-weight: bold;
 }
 
