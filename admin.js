@@ -31,3 +31,21 @@ function addPlayer() {
 
     console.log(players);
 }
+
+function removeRank() {
+    const playerName = document.getElementById("playerName").value;
+    const gamemode = document.getElementById("gamemode").value;
+
+    let player = players.find(p => p.name === playerName);
+
+    if (!player) {
+        document.getElementById("status").innerHTML = "Player not found";
+        return;
+    }
+
+    delete player.rankings[gamemode];
+
+    document.getElementById("status").innerHTML = `Removed ${gamemode} rank from ${playerName}`;
+
+    console.log(players);
+}
