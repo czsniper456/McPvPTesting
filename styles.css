@@ -1,26 +1,4 @@
 body {
-
-header {
-    text-align: center;
-    padding: 40px;
-}
-
-header h1 {
-    font-size: 4rem;
-    color: #d86cff;
-    text-shadow: 0 0 20px purple;
-}
-
-header p {
-    color: gold;
-    font-size: 1.2rem;
-}
-
-.buttons {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
     margin-bottom: 30px;
 }
 
@@ -48,12 +26,22 @@ button:hover {
 }
 
 .card {
-    background: rgba(20,20,20,0.9);
+    background: rgba(20,20,20,0.92);
     border: 2px solid purple;
     border-radius: 15px;
     padding: 20px;
     margin-bottom: 20px;
     box-shadow: 0 0 20px rgba(128,0,128,0.4);
+    color: white;
+}
+
+.card h2,
+.card p,
+.card span,
+.card div,
+.player,
+.player span {
+    color: white;
 }
 
 .player {
@@ -68,12 +56,12 @@ button:hover {
 }
 
 .tier {
-    color: gold;
+    color: gold !important;
     font-weight: bold;
 }
 
 .points {
-    color: #d86cff;
+    color: #d86cff !important;
 }
 
 input, select {
@@ -83,4 +71,6 @@ input, select {
     margin-bottom: 10px;
     border-radius: 10px;
     border: none;
+    background: #111;
+    color: white;
 }
