@@ -6,6 +6,7 @@ const tierPoints = {
 };
 
 const content = document.getElementById("content");
+
 let currentFilter = "all";
 let searchQuery = "";
 
@@ -36,33 +37,50 @@ document.getElementById("searchBar").addEventListener("input", (e) => {
 function showOverall() {
     let players = getPlayers();
 
+    // SEARCH FILTER
     if (searchQuery.trim() !== "") {
         players = players.filter(p =>
             p.name.toLowerCase().includes(searchQuery)
         );
     }
 
+    // GAMEMODE FILTER
     if (currentFilter !== "all") {
         players = players.filter(p =>
             p.rankings && p.rankings[currentFilter]
         );
     }
 
+    // SORT BY POINTS
     players.sort((a, b) => calculatePoints(b) - calculatePoints(a));
 
     content.innerHTML = "";
 
     const card = document.createElement("div");
     card.className = "card";
-    card.innerHTML = "<h2>Overall Rankings</h2>";
+
+    // Title changes depending on filter
+    if (currentFilter === "all") {
+        card.innerHTML = "<h2>Overall Rankings</h2>";
+    } else {
+        card.innerHTML = `<h2>${currentFilter.toUpperCase()} Rankings</h2>`;
+    }
 
     players.forEach(player => {
         const bubble = document.createElement("div");
         bubble.className = "player-bubble";
 
         let modesHTML = "";
-        for (const mode in player.rankings) {
-            modesHTML += `<div class="mode">${mode.toUpperCase()}: ${player.rankings[mode]}</div>`;
+
+        // If filtering by a specific gamemode → show ONLY that mode
+        if (currentFilter !== "all") {
+            const tier = player.rankings[currentFilter];
+            modesHTML = `<div class="mode">${currentFilter.toUpperCase()}: ${tier}</div>`;
+        } else {
+            // Show all modes
+            for (const mode in player.rankings) {
+                modesHTML += `<div class="mode">${mode.toUpperCase()}: ${player.rankings[mode]}</div>`;
+            }
         }
 
         bubble.innerHTML = `
