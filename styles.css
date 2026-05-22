@@ -1,6 +1,7 @@
 body {
-    background: #0a0a0a;
+    background: linear-gradient(135deg, #a100ff, #ff4fd8, #000000);
     font-family: Arial, sans-serif;
+    color: white;
 }
 
 button {
