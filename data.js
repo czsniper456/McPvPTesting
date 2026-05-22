@@ -21,9 +21,3 @@ const tierPoints = {
     "RHT5": 2,
     "RLT5": 1
 };
-
-let players = JSON.parse(localStorage.getItem("mcpvp_players")) || [];
-
-function savePlayers() {
-    localStorage.setItem("mcpvp_players", JSON.stringify(players));
-}
