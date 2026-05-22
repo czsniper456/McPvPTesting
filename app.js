@@ -1,27 +1,27 @@
 const content = document.getElementById("content");
 
 const tierPoints = {
-    "HT1": 10,
-    "LT1": 9,
-    "HT2": 8,
-    "LT2": 7,
-    "HT3": 6,
-    "LT3": 5,
-    "HT4": 4,
-    "LT4": 3,
-    "HT5": 2,
-    "LT5": 1,
+    HT1: 10,
+    LT1: 9,
+    HT2: 8,
+    LT2: 7,
+    HT3: 6,
+    LT3: 5,
+    HT4: 4,
+    LT4: 3,
+    HT5: 2,
+    LT5: 1,
 
-    "RHT1": 10,
-    "RLT1": 9,
-    "RHT2": 8,
-    "RLT2": 7,
-    "RHT3": 6,
-    "RLT3": 5,
-    "RHT4": 4,
-    "RLT4": 3,
-    "RHT5": 2,
-    "RLT5": 1
+    RHT1: 10,
+    RLT1: 9,
+    RHT2: 8,
+    RLT2: 7,
+    RHT3: 6,
+    RLT3: 5,
+    RHT4: 4,
+    RLT4: 3,
+    RHT5: 2,
+    RLT5: 1
 };
 
 function getPlayers() {
@@ -34,8 +34,7 @@ function calculatePoints(player) {
     if (!player.rankings) return total;
 
     for (const mode in player.rankings) {
-        const tier = player.rankings[mode];
-        total += tierPoints[tier] || 0;
+        total += tierPoints[player.rankings[mode]] || 0;
     }
 
     return total;
@@ -49,20 +48,20 @@ function showOverall() {
     const card = document.createElement("div");
     card.className = "card";
 
-    card.innerHTML = `<h2>Overall Rankings</h2>`;
+    card.innerHTML = "<h2>Overall Rankings</h2>";
 
     if (players.length === 0) {
-        card.innerHTML += `<p>No players added yet.</p>`;
+        card.innerHTML += "<p>No players added yet.</p>";
     }
 
     players.forEach(player => {
         const div = document.createElement("div");
         div.className = "player";
 
-        let ranks = "";
+        let gamemodes = "";
 
         for (const mode in player.rankings) {
-            ranks += `
+            gamemodes += `
                 <div>
                     ${mode.toUpperCase()}: ${player.rankings[mode]}
                 </div>
@@ -71,11 +70,11 @@ function showOverall() {
 
         div.innerHTML = `
             <div>
-                <div style="font-weight:bold;font-size:1.2rem;">
+                <div style="font-size: 1.2rem; font-weight: bold;">
                     ${player.name}
                 </div>
 
-                ${ranks}
+                ${gamemodes}
             </div>
 
             <div class="points">
@@ -112,12 +111,13 @@ function showGamemodes() {
 
         card.innerHTML = `<h2>${mode.toUpperCase()}</h2>`;
 
-        const rankedPlayers = players.filter(
-            player => player.rankings && player.rankings[mode]
+        const rankedPlayers = players.filter(player =>
+            player.rankings &&
+            player.rankings[mode]
         );
 
         if (rankedPlayers.length === 0) {
-            card.innerHTML += `<p>No ranked players.</p>`;
+            card.innerHTML += "<p>No ranked players.</p>";
         }
 
         rankedPlayers.forEach(player => {
@@ -126,7 +126,9 @@ function showGamemodes() {
 
             div.innerHTML = `
                 <span>${player.name}</span>
-                <span class="tier">${player.rankings[mode]}</span>
+                <span class="tier">
+                    ${player.rankings[mode]}
+                </span>
             `;
 
             card.appendChild(div);
