@@ -1,4 +1,6 @@
 body {
+    background: #0a0a0a;
+    font-family: Arial, sans-serif;
 }
 
 button {
@@ -9,67 +11,4 @@ button {
     color: white;
     font-size: 1rem;
     cursor: pointer;
-    transition: 0.3s;
-    font-weight: bold;
-}
-
-button:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 20px purple;
-}
-
-#content {
-    max-width: 1200px;
-    margin: auto;
-    padding: 20px;
-}
-
-.card {
-    background: rgba(20,20,20,0.92);
-    border: 2px solid purple;
-    border-radius: 15px;
-    padding: 20px;
-    margin-bottom: 20px;
-    box-shadow: 0 0 20px rgba(128,0,128,0.4);
-    color: white;
-}
-
-.card h2,
-.card p,
-.card span,
-.card div,
-.player,
-.player span {
-    color: white;
-}
-
-.player {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-}
-
-.player:last-child {
-    border-bottom: none;
-}
-
-.tier {
-    color: #ff4fd8 !important;
-    font-weight: bold;
-}
-
-.points {
-    color: #d86cff !important;
-}
-
-input, select {
-    width: 100%;
-    padding: 10px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    border-radius: 10px;
-    border: none;
-    background: #111;
-    color: white;
-}
+    transition: 0
