@@ -70,15 +70,8 @@ function showGamemodes() {
     content.innerHTML = "";
 
     const modes = [
-        "sword",
-        "axe",
-        "mace",
-        "uhc",
-        "nethpot",
-        "pot",
-        "smp",
-        "crystal",
-        "spearmace"
+        "sword", "axe", "mace", "uhc", "nethpot",
+        "pot", "smp", "crystal", "spearmace"
     ];
 
     modes.forEach(mode => {
@@ -88,8 +81,7 @@ function showGamemodes() {
         card.innerHTML = `<h2>${mode.toUpperCase()}</h2>`;
 
         const rankedPlayers = players.filter(player =>
-            player.rankings &&
-            player.rankings[mode]
+            player.rankings && player.rankings[mode]
         );
 
         if (rankedPlayers.length === 0) {
@@ -102,9 +94,7 @@ function showGamemodes() {
 
             div.innerHTML = `
                 <span>${player.name}</span>
-                <span class="tier">
-                    ${player.rankings[mode]}
-                </span>
+                <span class="tier">${player.rankings[mode]}</span>
             `;
 
             card.appendChild(div);
