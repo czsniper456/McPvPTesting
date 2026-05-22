@@ -1,67 +1,69 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
 
-<div class="background"></div>
+    <input
+        type="text"
+        id="playerName"
+        placeholder="Minecraft Username"
+    >
 
-<header>
-    <h1>Admin Panel</h1>
-</header>
+    <select id="gamemode">
+        <option value="sword">Sword</option>
+        <option value="axe">Axe</option>
+        <option value="mace">Mace</option>
+        <option value="uhc">UHC</option>
+        <option value="nethpot">Neth Pot</option>
+        <option value="pot">Pot</option>
+        <option value="smp">SMP</option>
+        <option value="crystal">Crystal</option>
+        <option value="spearmace">SpearMace</option>
+    </select>
 
-<div id="loginBox" class="card" style="max-width:600px;margin:auto;">
-    <h2>GitHub Username Access</h2>
-    <input type="text" id="githubUser" placeholder="Enter GitHub Username">
-    <button onclick="login()">Login</button>
-</div>
+    <select id="tier">
+        <option value="HT1">HT1</option>
+        <option value="LT1">LT1</option>
+        <option value="HT2">HT2</option>
+        <option value="LT2">LT2</option>
+        <option value="HT3">HT3</option>
+        <option value="LT3">LT3</option>
+        <option value="HT4">HT4</option>
+        <option value="LT4">LT4</option>
+        <option value="HT5">HT5</option>
+        <option value="LT5">LT5</option>
 
-<div id="adminPanel" style="display:none;max-width:600px;margin:auto;">
-    <div class="card">
-        <h2>Add Player</h2>
+        <option value="RHT1">RHT1</option>
+        <option value="RLT1">RLT1</option>
+        <option value="RHT2">RHT2</option>
+        <option value="RLT2">RLT2</option>
+        <option value="RHT3">RHT3</option>
+        <option value="RLT3">RLT3</option>
+        <option value="RHT4">RHT4</option>
+        <option value="RLT4">RLT4</option>
+        <option value="RHT5">RHT5</option>
+        <option value="RLT5">RLT5</option>
+    </select>
 
-        <input type="text" id="playerName" placeholder="Player Name">
+    <div style="display:flex;gap:10px;flex-wrap:wrap;">
+        <button onclick="addPlayer()">
+            Add Player / Add Tier
+        </button>
 
-        <select id="gamemode">
-            <option>sword</option>
-            <option>axe</option>
-            <option>mace</option>
-            <option>uhc</option>
-            <option>nethpot</option>
-            <option>pot</option>
-            <option>smp</option>
-            <option>crystal</option>
-            <option>spearmace</option>
-        </select>
+        <button onclick="changeTier()">
+            Change Tier
+        </button>
 
-        <select id="tier">
-            <option>HT1</option>
-            <option>LT1</option>
-            <option>HT2</option>
-            <option>LT2</option>
-            <option>HT3</option>
-            <option>LT3</option>
-            <option>HT4</option>
-            <option>LT4</option>
-            <option>HT5</option>
-            <option>LT5</option>
-            <option>RHT1</option>
-            <option>RLT1</option>
-        </select>
-
-        <button onclick="addPlayer()">Add Player / Add Tier</button>
-        <button onclick="changeTier()">Change Tier</button>
-        <button onclick="removeRank()">Remove Rank</button>
-
-        <div id="status"></div>
+        <button onclick="removeRank()">
+            Remove Rank
+        </button>
     </div>
+
+    <div
+        id="status"
+        style="margin-top:20px;font-weight:bold;color:#ff4fd8;"
+    ></div>
 </div>
 
 <script src="data.js"></script>
 <script src="admin.js"></script>
+
 </body>
 </html>
