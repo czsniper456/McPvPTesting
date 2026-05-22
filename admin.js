@@ -1,4 +1,4 @@
-function login() {
+unction login() {
     const username = document.getElementById("githubUser").value.trim();
     const password = document.getElementById("githubPass").value.trim();
 
@@ -25,8 +25,7 @@ function addPlayer() {
     const tier = document.getElementById("tier").value;
 
     if (!playerName) {
-        document.getElementById("status").innerHTML =
-            "Enter a player name.";
+        document.getElementById("status").innerHTML = "Enter a player name.";
         return;
     }
 
@@ -41,7 +40,6 @@ function addPlayer() {
             name: playerName,
             rankings: {}
         };
-
         players.push(player);
     }
 
@@ -68,8 +66,7 @@ function removeRank() {
     );
 
     if (!player) {
-        document.getElementById("status").innerHTML =
-            "Player not found.";
+        document.getElementById("status").innerHTML = "Player not found.";
         return;
     }
 
@@ -97,12 +94,11 @@ function deletePlayer() {
     );
 
     if (index === -1) {
-        document.getElementById("status").innerHTML =
-            "Player not found.";
+        document.getElementById("status").innerHTML = "Player not found.";
         return;
     }
 
-    players.splice(index, 1); // <-- FIXED
+    players.splice(index, 1);
 
     savePlayers(players);
 
