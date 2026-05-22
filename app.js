@@ -18,9 +18,11 @@ function showOverall() {
     const card = document.createElement("div");
     card.className = "card";
 
-    card.innerHTML = `
-        <h2>Overall Rankings</h2>
-    `;
+    card.innerHTML = `<h2>Overall Rankings</h2>`;
+
+    if (sorted.length === 0) {
+        card.innerHTML += `<p>No players added yet.</p>`;
+    }
 
     sorted.forEach(player => {
         const div = document.createElement("div");
@@ -59,10 +61,12 @@ function showGamemodes() {
         card.innerHTML = `<h2>${mode.toUpperCase()}</h2>`;
 
         const sorted = [...players].sort((a, b) => {
-            return tierPoints[b.rankings[mode]] - tierPoints[a.rankings[mode]];
+            return (tierPoints[b.rankings[mode]] || 0) - (tierPoints[a.rankings[mode]] || 0);
         });
 
         sorted.forEach(player => {
+            if (!player.rankings[mode]) return;
+
             const div = document.createElement("div");
             div.className = "player";
 
