@@ -1,20 +1,31 @@
-<h1 class="title">McPvP<span class="white">Tiers</span></h1>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Leaderboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+    <h1 class="title">McPvP<span class="white">Tiers</span></h1>
 
-<div class="top-controls">
-    <input type="text" id="searchBar" placeholder="Search player...">
-</div>
+    <div class="top-controls">
+        <input type="text" id="searchBar" placeholder="Search player...">
+    </div>
 
-<div class="filter-buttons">
-    <button onclick="filterMode('all')">All</button>
-    <button onclick="filterMode('sword')">Sword</button>
-    <button onclick="filterMode('axe')">Axe</button>
-    <button onclick="filterMode('mace')">Mace</button>
-    <button onclick="filterMode('uhc')">UHC</button>
-    <button onclick="filterMode('nethpot')">NethPot</button>
-    <button onclick="filterMode('pot')">Pot</button>
-    <button onclick="filterMode('smp')">SMP</button>
-    <button onclick="filterMode('crystal')">Crystal</button>
-    <button onclick="filterMode('spearmace')">SpearMace</button>
-</div>
+    <div class="filter-buttons">
+        <button onclick="filterMode('all')">All</button>
+        <button onclick="filterMode('sword')">Sword</button>
+        <button onclick="filterMode('axe')">Axe</button>
+        <button onclick="filterMode('mace')">Mace</button>
+        <button onclick="filterMode('uhc')">UHC</button>
+        <button onclick="filterMode('nethpot')">NethPot</button>
+        <button onclick="filterMode('pot')">Pot</button>
+        <button onclick="filterMode('smp')">SMP</button>
+        <button onclick="filterMode('crystal')">Crystal</button>
+        <button onclick="filterMode('spearmace')">SpearMace</button>
+    </div>
 
-<div id="content"></div>
+    <div id="content"></div>
+
+    <script src="app.js"></script>
+</body>
