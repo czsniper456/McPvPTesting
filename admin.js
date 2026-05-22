@@ -19,88 +19,41 @@ function savePlayers(players) {
 }
 
 function addPlayer() {
-    const playerName = document.getElementById("playerName").value.trim();
-    const gamemode = document.getElementById("gamemode").value;
+    const name = document.getElementById("playerName").value.trim();
+    const mode = document.getElementById("gamemode").value;
     const tier = document.getElementById("tier").value;
 
-    if (!playerName) {
-        document.getElementById("status").innerHTML = "Enter a player name.";
-        return;
-    }
+    if (!name) return;
 
     let players = getPlayers();
-
-    let player = players.find(
-        p => p.name.toLowerCase() === playerName.toLowerCase()
-    );
+    let player = players.find(p => p.name.toLowerCase() === name.toLowerCase());
 
     if (!player) {
-        player = {
-            name: playerName,
-            rankings: {}
-        };
+        player = { name, rankings: {} };
         players.push(player);
     }
 
-    player.rankings[gamemode] = tier;
-
+    player.rankings[mode] = tier;
     savePlayers(players);
-
-    document.getElementById("status").innerHTML =
-        `${playerName} saved successfully.`;
-}
-
-function changeTier() {
-    addPlayer();
 }
 
 function removeRank() {
-    const playerName = document.getElementById("playerName").value.trim();
-    const gamemode = document.getElementById("gamemode").value;
+    const name = document.getElementById("playerName").value.trim();
+    const mode = document.getElementById("gamemode").value;
 
     let players = getPlayers();
+    let player = players.find(p => p.name.toLowerCase() === name.toLowerCase());
 
-    let player = players.find(
-        p => p.name.toLowerCase() === playerName.toLowerCase()
-    );
+    if (!player) return;
 
-    if (!player) {
-        document.getElementById("status").innerHTML = "Player not found.";
-        return;
-    }
-
-    delete player.rankings[gamemode];
-
+    delete player.rankings[mode];
     savePlayers(players);
-
-    document.getElementById("status").innerHTML =
-        `${gamemode} removed from ${playerName}.`;
 }
 
 function deletePlayer() {
-    const playerName = document.getElementById("playerName").value.trim();
-
-    if (!playerName) {
-        document.getElementById("status").innerHTML =
-            "Enter a player name to delete.";
-        return;
-    }
-
+    const name = document.getElementById("playerName").value.trim();
     let players = getPlayers();
 
-    const index = players.findIndex(
-        p => p.name.toLowerCase() === playerName.toLowerCase()
-    );
-
-    if (index === -1) {
-        document.getElementById("status").innerHTML = "Player not found.";
-        return;
-    }
-
-    players.splice(index, 1);
-
+    players = players.filter(p => p.name.toLowerCase() !== name.toLowerCase());
     savePlayers(players);
-
-    document.getElementById("status").innerHTML =
-        `${playerName} deleted successfully.`;
 }
