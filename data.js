@@ -1,4 +1,4 @@
-const tierPoints = {
+cconst tierPoints = {
     "HT1": 10,
     "LT1": 9,
     "HT2": 8,
@@ -22,33 +22,4 @@ const tierPoints = {
     "RLT5": 1
 };
 
-const players = [
-    {
-        name: "ExamplePlayer",
-        rankings: {
-            sword: "HT1",
-            axe: "LT2",
-            mace: "HT3",
-            uhc: "LT1",
-            nethpot: "HT2",
-            pot: "HT4",
-            smp: "LT3",
-            crystal: "HT1",
-            spearmace: "HT2"
-        }
-    },
-    {
-        name: "RetiredLegend",
-        rankings: {
-            sword: "RHT1",
-            axe: "RHT2",
-            mace: "RLT1",
-            uhc: "RHT3",
-            nethpot: "RLT2",
-            pot: "RHT4",
-            smp: "RLT3",
-            crystal: "RHT2",
-            spearmace: "RLT1"
-        }
-    }
-];
+const players = [];
