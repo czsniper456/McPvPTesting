@@ -1,7 +1,9 @@
 function login() {
     const username = document.getElementById("githubUser").value.trim();
+    const password = document.getElementById("githubPass").value.trim();
 
-    if (username === "czsniper456") {
+    // TEMPORARY SECURITY — replace with GitHub OAuth later
+    if (username === "czsniper456" && password === "YOUR_SECRET_PASSWORD") {
         document.getElementById("loginBox").style.display = "none";
         document.getElementById("adminPanel").style.display = "block";
     } else {
@@ -49,8 +51,6 @@ function addPlayer() {
 
     document.getElementById("status").innerHTML =
         `${playerName} saved successfully.`;
-
-    console.log(localStorage.getItem("mcpvp_players"));
 }
 
 function changeTier() {
@@ -101,3 +101,11 @@ function deletePlayer() {
             "Player not found.";
         return;
     }
+
+    players.splice(index, 1); // <-- FIXED
+
+    savePlayers(players);
+
+    document.getElementById("status").innerHTML =
+        `${playerName} deleted successfully.`;
+}
