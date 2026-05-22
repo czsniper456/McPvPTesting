@@ -1,15 +1,81 @@
 const content = document.getElementById("content");
+
+const tierPoints = {
+    "HT1": 10,
+    "LT1": 9,
+    "HT2": 8,
+    "LT2": 7,
+    "HT3": 6,
+    "LT3": 5,
+    "HT4": 4,
+    "LT4": 3,
+    "HT5": 2,
+    "LT5": 1,
+
+    "RHT1": 10,
+    "RLT1": 9,
+    "RHT2": 8,
+    "RLT2": 7,
+    "RHT3": 6,
+    "RLT3": 5,
+    "RHT4": 4,
+    "RLT4": 3,
+    "RHT5": 2,
+    "RLT5": 1
+};
+
+function getPlayers() {
+    return JSON.parse(localStorage.getItem("mcpvp_players")) || [];
+}
+
+function calculatePoints(player) {
+    let total = 0;
+
+    if (!player.rankings) return total;
+
+    for (const mode in player.rankings) {
+        const tier = player.rankings[mode];
+        total += tierPoints[tier] || 0;
+    }
+
+    return total;
+}
+
+function showOverall() {
+    const players = getPlayers();
+
+    content.innerHTML = "";
+
+    const card = document.createElement("div");
+    card.className = "card";
+
+    card.innerHTML = `<h2>Overall Rankings</h2>`;
+
+    if (players.length === 0) {
+        card.innerHTML += `<p>No players added yet.</p>`;
+    }
+
+    players.forEach(player => {
+        const div = document.createElement("div");
+        div.className = "player";
+
+        let ranks = "";
+
+        for (const mode in player.rankings) {
+            ranks += `
+                <div>
+                    ${mode.toUpperCase()}: ${player.rankings[mode]}
+                </div>
+            `;
         }
 
         div.innerHTML = `
             <div>
-                <div style="font-size:1.2rem;font-weight:bold;">
+                <div style="font-weight:bold;font-size:1.2rem;">
                     ${player.name}
                 </div>
 
-                <div style="margin-top:8px;opacity:0.9;">
-                    ${gamemodeRanks}
-                </div>
+                ${ranks}
             </div>
 
             <div class="points">
@@ -46,14 +112,9 @@ function showGamemodes() {
 
         card.innerHTML = `<h2>${mode.toUpperCase()}</h2>`;
 
-        const rankedPlayers = players
-            .filter(player => player.rankings && player.rankings[mode])
-            .sort((a, b) => {
-                return (
-                    (tierPoints[b.rankings[mode]] || 0) -
-                    (tierPoints[a.rankings[mode]] || 0)
-                );
-            });
+        const rankedPlayers = players.filter(
+            player => player.rankings && player.rankings[mode]
+        );
 
         if (rankedPlayers.length === 0) {
             card.innerHTML += `<p>No ranked players.</p>`;
