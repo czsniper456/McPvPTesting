@@ -1,1 +1,86 @@
+body {
 
+header {
+    text-align: center;
+    padding: 40px;
+}
+
+header h1 {
+    font-size: 4rem;
+    color: #d86cff;
+    text-shadow: 0 0 20px purple;
+}
+
+header p {
+    color: gold;
+    font-size: 1.2rem;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+button {
+    background: linear-gradient(45deg, purple, gold);
+    border: none;
+    padding: 15px 25px;
+    border-radius: 12px;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: bold;
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px purple;
+}
+
+#content {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+.card {
+    background: rgba(20,20,20,0.9);
+    border: 2px solid purple;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 20px rgba(128,0,128,0.4);
+}
+
+.player {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.player:last-child {
+    border-bottom: none;
+}
+
+.tier {
+    color: gold;
+    font-weight: bold;
+}
+
+.points {
+    color: #d86cff;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    border: none;
+}
