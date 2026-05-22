@@ -1,20 +1,5 @@
 const content = document.getElementById("content");
 
-function calculatePoints(player) {
-    let total = 0;
-
-    for (const mode in player.rankings) {
-        total += tierPoints[player.rankings[mode]] || 0;
-    }
-
-    return total;
-}
-
-function showOverall() {
-    content.innerHTML = "";
-
-    const sorted = [...players].sort((a, b) => calculatePoints(b) - calculatePoints(a));
-
     const card = document.createElement("div");
     card.className = "card";
 
